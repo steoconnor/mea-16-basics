@@ -32,12 +32,6 @@ pipeline {
 
         }
 
-        // post {
-        //     always {
-        //         archiveArtefacts '*.zip'
-        //     }
-        // }
-
         post {
         always {
             archiveArtifacts '*.zip'
