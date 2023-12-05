@@ -1,3 +1,5 @@
-echo "I am running"
-echo "Added webhook"
-echo "Extra webhook"
+echo "I am running" > 1.txt
+echo "Added webhook" > 2.txt
+echo "Extra webhook" > 3.txt
+
+zip archive.zip *.txt 
