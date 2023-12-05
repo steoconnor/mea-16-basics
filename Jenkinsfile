@@ -4,50 +4,37 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Echoing') {
 
             steps {
 
-                sh 'echo "Building..."'
-
-                sh 'ls -al'
+                sh '''
+                 echo "Hi there"
+                 pwd
+                 echo "Inside shell block"
+                '''
 
             }
 
         }
 
-        stage('Test') {
+        stage('Run script') {
 
             steps {
 
-                sh 'echo "Testing..."'
-
-                sh 'pwd'
-
-                sh 'touch testfile.txt'
-
-                sh 'ls -l'
+                sh '''
+                 sh ./run.sh
+                '''
 
             }
 
         }
 
-        stage('Deploy') {
-
-            steps {
-
-                sh 'cat ./deploy.sh'
-
-                sh 'echo "Deploying..."'
-
-                sh 'mv testfile.txt /tmp'
-
-                sh 'ls -l /tmp'
-
-            }
-
         }
 
+        post {
+        always {
+            archiveArtifacts '*.zip'
+        }
     }
-
 }
